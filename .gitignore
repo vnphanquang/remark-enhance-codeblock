@@ -1,0 +1,17 @@
+# dependencies
+node_modules
+
+# output
+coverage
+types/
+
+# vite temp
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+.vitest-attachments/
+
+# misc
+*.log*
+.DS_Store
+*.pem
+

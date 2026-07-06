@@ -1,0 +1,6 @@
+allowBuilds:
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@vnphanquang/eslint-config'
+  - remark-transform-blockquote
+  - remark-codeblock-source

@@ -1,0 +1,9 @@
+{
+	"$schema": "https://raw.githubusercontent.com/changesets/changesets/refs/heads/main/packages/config/schema.json",
+	"changelog": [
+		"@changesets/changelog-github",
+		{ "repo": "vnphanquang/remark-enhance-codeblock" }
+	],
+	"access": "public",
+	"baseBranch": "main"
+}
