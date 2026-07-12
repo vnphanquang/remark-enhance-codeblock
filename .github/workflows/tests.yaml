@@ -46,10 +46,21 @@ jobs:
       - name: Install dependencies
         run: pnpm install --ignore-scripts --no-frozen-lockfile
 
+      - name: Cache Playwright Browsers
+        id: playwright-cache
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Playwright Browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: pnpm dlx playwright install --with-deps
+
       - name: Lint
         run: 'pnpm lint'
 
-      - name: Run Unit Tests
+      - name: Run Tests
         run: 'pnpm ci:test'
 
       - name: Upload to Codecov
@@ -57,6 +68,6 @@ jobs:
         with:
           fail_ci_if_error: true
           files: ./coverage/lcov.info
-          flags: unittests, ${{ runner.os }}
+          flags: ${{ runner.os }}
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true

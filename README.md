@@ -17,9 +17,9 @@ pnpm add -D remark-enhance-codeblock # or via npm, yarn, ...
 ### Files
 
 ````markdown
-> [!CODE] `!group=files`
+> [!CODE] `#group=files`
 >
-> ```html title="index.html"
+> ```html #title="index.html"
 > <!doctype html>
 > <html>
 > 	<head>
@@ -32,13 +32,13 @@ pnpm add -D remark-enhance-codeblock # or via npm, yarn, ...
 > </html>
 > ```
 >
-> ```css title="style.css"
+> ```css #title="style.css"
 > main {
 > 	color: green;
 > }
 > ```
 >
-> ```js title="script.js"
+> ```js #title="script.js"
 > console.log('Hello world!');
 > ```
 ````
@@ -46,17 +46,17 @@ pnpm add -D remark-enhance-codeblock # or via npm, yarn, ...
 ### Tabs
 
 ````markdown
-> [!CODE] `!group=tabs`
+> [!CODE] `#group=tabs`
 >
-> ```bash title="npm"
+> ```bash #title="npm"
 > npm install --save-dev remark-enhance-codeblock
 > ```
 >
-> ```bash title="pnpm"
+> ```bash #title="pnpm"
 > pnpm add -D remark-enhance-codeblock
 > ```
 >
-> ```bash title="yarn"
+> ```bash #title="yarn"
 > yarn add -D remark-enhance-codeblock
 > ```
 ````

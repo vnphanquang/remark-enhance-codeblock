@@ -2,13 +2,8 @@
 export default {
 	extends: ['stylelint-config-standard', 'stylelint-config-clean-order'],
 	rules: {
-		'declaration-block-no-redundant-longhand-properties': [
-			true,
-			{
-				ignoreLonghands: ['padding-block-end', 'padding-block-start'],
-			},
-		],
+		'no-descending-specificity': null,
+		'declaration-block-no-redundant-longhand-properties': null,
 	},
-	ignoreFiles: ['coverage/**'],
+	ignoreFiles: ['coverage/**', './styles/**'],
 };
-

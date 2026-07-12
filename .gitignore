@@ -4,11 +4,13 @@ node_modules
 # output
 coverage
 types/
+/styles/
 
 # vite temp
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vitest-attachments/
+tests/__screenshots__/plugin.browser.test.ts
 
 # misc
 *.log*

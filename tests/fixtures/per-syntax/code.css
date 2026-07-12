@@ -1,0 +1,8 @@
+main {
+	background-color: white;
+
+	&::after {
+		content: 'Hello world';
+		color: black;
+	}
+}

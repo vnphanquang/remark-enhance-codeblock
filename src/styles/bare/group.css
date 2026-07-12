@@ -1,0 +1,252 @@
+.codeblock-group {
+	anchor-scope: --header, --tab, --panel;
+}
+
+.codeblock-tabs {
+	overflow: auto;
+	display: flex;
+	flex: 1;
+	justify-content: start;
+
+	&::before,
+	&::after {
+		content: '';
+
+		position: absolute;
+		z-index: 1;
+		inset-block-end: calc(anchor(--header self-end));
+
+		border-block-end-color: var(--c-border-color, var(--cd-border-color));
+		border-block-end-style: var(--c-border-style, var(--cd-border-style));
+		border-block-end-width: var(--c-border-width, var(--cd-border-width));
+	}
+
+	&::before {
+		inset-inline-start: anchor(--header self-start);
+		inset-inline-end: anchor(--tab self-start);
+	}
+
+	&::after {
+		inset-inline-start: anchor(--tab self-end);
+		inset-inline-end: anchor(--header self-end);
+	}
+}
+
+.codeblock-tab {
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+
+	padding-block-end: var(--c-border-width, var(--cd-border-width));
+	padding-inline: var(--c-padding-inline, var(--cd-padding-inline));
+	border-inline-end-color: var(--c-border-color, var(--cd-border-color));
+	border-inline-end-style: var(--c-border-style, var(--cd-border-style));
+	border-inline-end-width: var(--c-border-width, var(--cd-border-width));
+
+	background-color: var(--c-content-bg, var(--cd-content-bg));
+
+	transition-timing-function: ease-in;
+	transition-duration: var(--c-transition-duration, var(--cd-transition-duration));
+	transition-property: none;
+
+	&:hover:not(:disabled, :has(input:disabled)) {
+		color: var(--c-hover-color, var(--cd-hover-color));
+		background-color: var(--c-hover-bg, var(--cd-hover-bg));
+		transition-timing-function: ease-out;
+	}
+
+	&:has(input:checked) {
+		anchor-name: --tab;
+
+		&::before {
+			content: '';
+
+			position: absolute;
+			inset-block-start: calc(
+				anchor(--tab self-start) - var(--c-border-width, var(--cd-border-width))
+			);
+			inset-block-end: anchor(--tab self-end);
+			inset-inline-start: calc(
+				anchor(--tab self-start) - var(--c-border-width, var(--cd-border-width))
+			);
+			inset-inline-end: anchor(--tab self-end);
+
+			border-block-start-color: var(--c-tab-selected-color, var(--cd-tab-selected-color));
+			border-block-start-style: var(--c-border-style, var(--cd-border-style));
+			border-block-start-width: calc(var(--c-border-width, var(--cd-border-width)) * 2.5);
+		}
+	}
+
+	&:first-of-type {
+		padding-inline-start: calc(
+			var(--c-padding-inline, var(--cd-padding-inline)) -
+				var(--c-file-icon-offset-inline-start, var(--cd-file-icon-offset-inline-start))
+		);
+		border-start-start-radius: var(--c-border-radius, var(--cd-border-radius));
+
+		&::before {
+			border-start-start-radius: calc(var(--c-border-radius, var(--cd-border-radius)) * 1);
+		}
+	}
+
+	&:has(input:focus-visible),
+	.codeblock-group:has(.codeblock-content:focus-visible) & {
+		outline: none;
+
+		&::after {
+			content: '';
+
+			position: absolute;
+			z-index: 2;
+			inset-block-start: calc(
+				anchor(--tab self-start) - var(--c-border-width, var(--cd-border-width))
+			);
+			inset-block-end: anchor(--tab self-end);
+			inset-inline-start: calc(
+				anchor(--tab self-start) - var(--c-border-width, var(--cd-border-width))
+			);
+			inset-inline-end: anchor(--tab self-end);
+
+			border-color: var(--c-focus-outline-color, var(--cd-focus-outline-color));
+			border-style: var(--c-border-style, var(--cd-border-style));
+			border-width: var(--c-focus-outline-width, var(--cd-focus-outline-width));
+		}
+	}
+
+	.codeblock-group:has(.codeblock-content:focus-visible) &::after {
+		border-block-end-width: 0;
+	}
+
+	&:not(:has(input:checked)) {
+		background-color: transparent;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition-property: color, background-color;
+	}
+}
+
+.codeblock-header {
+	.codeblock-group > & {
+		anchor-name: --header;
+		padding-inline-start: 0;
+		border-block-end-width: 0;
+	}
+}
+
+.codeblock-action {
+	.codeblock-group & {
+		&:is(:focus-visible, :has(input:focus-visible)):not(:disabled, :has(input:disabled)) {
+			&::after {
+				inset-block-end: anchor(--action self-end);
+			}
+		}
+	}
+}
+
+.codeblock {
+	anchor-name: --panel;
+
+	.codeblock-group > & {
+		--display: block;
+
+		display: none;
+		margin-block: 0;
+		border-block-start-width: 0;
+
+		&.opened {
+			display: var(--display);
+		}
+
+		&:has(.codeblock-content:focus-visible) {
+			border-color: var(--c-focus-outline-color, var(--cd-focus-outline-color));
+
+			&::before {
+				content: '';
+
+				position: absolute;
+				z-index: 3;
+				inset-block-start: calc(
+					anchor(--tab self-end) - var(--c-border-width, var(--cd-border-width))
+				);
+				inset-inline-start: calc(
+					anchor(--tab self-start) + var(--c-border-width, var(--cd-border-width))
+				);
+				inset-inline-end: calc(
+					anchor(--tab self-end) + var(--c-border-width, var(--cd-border-width) * 2)
+				);
+
+				border-color: var(--c-content-bg, var(--cd-content-bg));
+				border-style: solid;
+				border-width: var(--c-focus-outline-width, var(--cd-focus-outline-width));
+			}
+
+			&::after {
+				content: '';
+
+				position: absolute;
+				z-index: 2;
+				inset-block-start: calc(
+					anchor(--panel self-start) - var(--c-border-width, var(--cd-border-width))
+				);
+				inset-block-end: calc(
+					anchor(--panel self-end) - var(--c-border-width, var(--cd-border-width))
+				);
+				inset-inline-start: calc(
+					anchor(--panel self-start) - var(--c-border-width, var(--cd-border-width))
+				);
+				inset-inline-end: calc(
+					anchor(--panel self-end) - var(--c-border-width, var(--cd-border-width))
+				);
+
+				border-color: var(--c-focus-outline-color, var(--cd-focus-outline-color));
+				border-style: solid;
+				border-width: var(--c-focus-outline-width, var(--cd-focus-outline-width));
+			}
+		}
+	}
+
+	.codeblock-group:fullscreen & {
+		--display: grid;
+
+		grid-column: 1 / -1;
+		grid-row: 2 / 3;
+		grid-template-columns: subgrid;
+		grid-template-rows: subgrid;
+	}
+
+	.codeblock-group:has(.codeblock-tab:nth-child(1) > input:checked) &:nth-of-type(1) {
+		display: var(--display);
+	}
+
+	.codeblock-group:has(.codeblock-tab:nth-child(2) > input:checked) &:nth-of-type(2) {
+		display: var(--display);
+	}
+
+	.codeblock-group:has(.codeblock-tab:nth-child(3) > input:checked) &:nth-of-type(3) {
+		display: var(--display);
+	}
+
+	.codeblock-group:has(.codeblock-tab:nth-child(4) > input:checked) &:nth-of-type(4) {
+		display: var(--display);
+	}
+
+	.codeblock-group:has(.codeblock-tab:nth-child(5) > input:checked) &:nth-of-type(5) {
+		display: var(--display);
+	}
+}
+
+.codeblock-content {
+	.codeblock-group {
+		outline: none;
+	}
+
+	.codeblock-group:has(.codeblock-tabs:is(:hover, :focus-within)) & {
+		transition-property: none;
+	}
+
+	.codeblock-group &:focus-visible {
+		outline: none;
+	}
+}
