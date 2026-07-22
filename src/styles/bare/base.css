@@ -15,6 +15,9 @@
 }
 
 .codeblock-root {
+	--cd-font-size: 1rem;
+	--cd-font-size-fullscreen: calc(var(--c-font-size, var(--cd-font-size)) * 1.25);
+	--cd-font-family: monospace;
 	--cd-margin-block: 1.5em;
 	--cd-padding-block: 0.75em;
 	--cd-padding-inline: 1em;
@@ -24,9 +27,6 @@
 	--cd-border-radius: 0;
 	--cd-focus-outline-color: blue;
 	--cd-focus-outline-width: calc(var(--c-border-width, var(--cd-border-width)) * 2);
-	--cd-font-size: 1rem;
-	--cd-font-size-fullscreen: calc(var(--c-font-size, var(--cd-font-size)) * 1.25);
-	--cd-font-family: monospace;
 	--cd-header-bg: light-dark(#f7f7f7, #151515);
 	--cd-content-max-height: 30dvh;
 	--cd-content-bg: light-dark(white, black);

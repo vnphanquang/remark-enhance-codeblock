@@ -401,6 +401,9 @@ Specify any of the following variables where appropriate, typically on `:root` o
 
 | CSS Variable                        | Default Counterpart                  | Default Value                                             |
 | ----------------------------------- | ------------------------------------ | --------------------------------------------------------- |
+| `--c-font-size`                     | `--cd-font-size`                     | `1rem`                                                    |
+| `--c-font-size-fullscreen`          | `--cd-font-size-fullscreen`          | `calc(var(--c-font-size, var(--cd-font-size)) * 1.25)`    |
+| `--c-font-family`                   | `--cd-font-family`                   | `monospace`                                               |
 | `--c-margin-block`                  | `--cd-margin-block`                  | `1.5em`                                                   |
 | `--c-padding-block`                 | `--cd-padding-block`                 | `0.75em`                                                  |
 | `--c-padding-inline`                | `--cd-padding-inline`                | `1em`                                                     |
@@ -410,9 +413,6 @@ Specify any of the following variables where appropriate, typically on `:root` o
 | `--c-border-radius`                 | `--cd-border-radius`                 | `0`                                                       |
 | `--c-focus-outline-color`           | `--cd-focus-outline-color`           | `blue`                                                    |
 | `--c-focus-outline-width`           | `--cd-focus-outline-width`           | `calc(var(--c-border-width, var(--cd-border-width)) * 2)` |
-| `--c-font-size`                     | `--cd-font-size`                     | `1rem`                                                    |
-| `--c-font-size-fullscreen`          | `--cd-font-size-fullscreen`          | `calc(var(--c-font-size, var(--cd-font-size)) * 1.25)`    |
-| `--c-font-family`                   | `--cd-font-family`                   | `monospace`                                               |
 | `--c-header-bg`                     | `--cd-header-bg`                     | `light-dark(#f7f7f7, #151515)`                            |
 | `--c-content-max-height`            | `--cd-content-max-height`            | `30dvh`                                                   |
 | `--c-content-bg`                    | `--cd-content-bg`                    | `light-dark(white, black)`                                |
