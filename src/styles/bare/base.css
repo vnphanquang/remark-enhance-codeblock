@@ -276,6 +276,10 @@
 	transition-duration: var(--c-transition-duration, var(--cd-transition-duration));
 	transition-property: none;
 
+	&:dir(rtl) {
+		transform: translateX(calc(var(--c-padding-inline, var(--cd-padding-inline)) * -1));
+	}
+
 	.codeblock-content:hover &,
 	.codeblock.codeblock-root:not(:has(.codeblock-header)):hover & {
 		pointer-events: none;
