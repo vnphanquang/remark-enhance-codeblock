@@ -172,13 +172,14 @@ const defaultCopy = function ({ pre }) {
 /**
  * @callback EnhanceCodeBlockCopy
  * @param {EnhanceCodeBlockCopyContext} context relevant information for determining what text to copy
- * @returns {string | null | undefined | false | void} a string to pass to `navigator.clipboard.writeText()`, or any falsy value if you implement your own copy logic (e.g. use the legacy `execCommand('copy')` method)
+ * @returns {string | null | undefined | false | void} a string to pass to `navigator.clipboard.writeText()`,
+ * or any falsy value if implementing custom copy logic (e.g. use the legacy `execCommand('copy')` method)
  */
 
 /**
  * @typedef EnhanceCodeBlockOptions
  * @property {EnhanceCodeBlockCopy} [copy]  instruction on what text to copy
- * @property {number} [copyTimeoutMs]  how long to show the "copied" state before reverting back to the default state, in milliseconds
+ * @property {number} [copyTimeoutMs] how long to show the "copied" state before reverting back to the default state, in milliseconds
  */
 
 /**
@@ -186,7 +187,7 @@ const defaultCopy = function ({ pre }) {
  * @param {EnhanceCodeBlockOptions} [options]
  * @returns {void}
  */
-export function enhanceCodeblocks(options) {
+export function enhanceCodeblock(options) {
 	userOptions = options;
 
 	// 1. Update for tab changes in grouped code blocks

@@ -55,8 +55,8 @@ app.get('/', async (c) => {
 				</script>
 
 				<script type="module">
-					import { enhanceCodeblocks } from 'remark-enhance-codeblock';
-					enhanceCodeblocks();
+					import { enhanceCodeblock } from 'remark-enhance-codeblock';
+					enhanceCodeblock();
 				</script>
 
 				<style>
