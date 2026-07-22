@@ -35,13 +35,13 @@ export function remarkEnhanceCodeblock(options = {}) {
 							// clear all immediate children that are not of type 'code'
 							node.children = node.children.filter((child) => child.type === 'code');
 
+							const fileIcon = get_internal_meta_attribute(meta?.attributes, 'file-icon', 'boolean')?.value ?? null
+
 							// register this group for later reference
 							groupMap.set(node, {
 								id: create_id(),
 								tabs: [],
-								fileIcon:
-									get_internal_meta_attribute(meta?.attributes, 'file-icon', 'boolean')?.value ||
-									null,
+								fileIcon,
 							});
 						},
 					},
