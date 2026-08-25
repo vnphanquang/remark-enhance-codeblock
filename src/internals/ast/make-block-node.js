@@ -30,7 +30,7 @@ export function make_block_node(input, context) {
 		{
 			hName: 'div',
 			hProperties: {
-				className: ['codeblock', input.variant === 'standalone' ? 'codeblock-root' : ''],
+				className: `codeblock${input.variant === 'standalone' ? ' codeblock-root' : ''}`,
 				'data-oneliner': input.code.value.trim().split('\n').length === 1,
 			},
 			children:

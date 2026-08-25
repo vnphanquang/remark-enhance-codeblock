@@ -7,7 +7,7 @@ import { make_title_node } from '../make-title-node';
  * @property {string} groupId
  * @property {boolean} checked
  * @property {string} title
- * @property {string | false} fileIconClasses
+ * @property {string | false | null | undefined} fileIconClasses
  */
 
 /**

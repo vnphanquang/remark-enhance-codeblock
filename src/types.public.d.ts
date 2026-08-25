@@ -1,7 +1,7 @@
 export type RemarkEnhanceCodeblockTrimStrategy = 'start' | 'end' | 'both' | 'none';
 
 /**
- * text labels for the various buttons and switches in `remark-enhance-codeblock`. Even though the
+ * text labels for buttons and switches in `remark-enhance-codeblock`. Even though the
  * typing is permissive (every field is optional), it is recommended to provide all labels for
  * a consistent user experience.
  */
@@ -63,13 +63,13 @@ export interface RemarkEnhanceCodeblockIconClasses {
 	 * icon class names for language file icon before the title if provided
 	 * @default (lang) => `i i-file${lang ? ` i-file-${lang}` : ''}`;
 	 */
-	file?: (lang?: string | null | undefined) => string;
+	file?: (lang?: string | null | undefined) => string | undefined | null;
 }
 
 /** configure the behavior of `remark-enhance-codeblock` */
 export interface RemarkEnhanceCodeblockOptions {
 	/**
-	 * whether to trim leading & trailing whitespaces  in code blocks
+	 * whether to trim leading & trailing whitespaces in code blocks
 	 * @default 'both'
 	 *
 	 * alternatively, per-instance behavior can be configured by setting `#trim`

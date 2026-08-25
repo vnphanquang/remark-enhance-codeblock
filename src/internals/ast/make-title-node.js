@@ -6,7 +6,7 @@ import { make_node } from './make-node';
 /**
  * @typedef MakeTitleNodeInput
  * @property {string} text
- * @property {string | false} [fileIconClasses]
+ * @property {string | false | null | undefined} [fileIconClasses]
  */
 
 /**

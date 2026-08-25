@@ -2,6 +2,7 @@
 import dedent from 'dedent';
 import { toHtml } from 'hast-util-to-html';
 import type { Code, Root } from 'mdast';
+import { fromMarkdown } from 'mdast-util-from-markdown';
 import { toHast } from 'mdast-util-to-hast';
 import rehypeStringify from 'rehype-stringify';
 import remarkParse from 'remark-parse';
@@ -12,7 +13,7 @@ import type { Transformer } from 'unified';
 import type { Node as UnistNode } from 'unist';
 import { u } from 'unist-builder';
 import { select } from 'unist-util-select';
-import type { VFile } from 'vfile';
+import { VFile } from 'vfile';
 import { expect } from 'vitest';
 
 import { DEFAULT_OPTIONS } from '../src/internals/resolve-options';
@@ -88,6 +89,12 @@ export function mdast2html(node: UnistNode): string {
 	const hast = toHast(mdast as any);
 	const html = toHtml(hast as any);
 	return html;
+}
+
+export function markdown2hast(markdown: string, options?: RemarkEnhanceCodeblockOptions) {
+	const mdast = fromMarkdown(markdown);
+	remarkEnhanceCodeblock(options)(mdast as any, new VFile(), () => {});
+	return toHast(mdast);
 }
 
 export function mdast2hast(node: UnistNode) {
