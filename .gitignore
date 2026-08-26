@@ -17,3 +17,7 @@ tests/__screenshots__/plugin.browser.test.ts
 .DS_Store
 *.pem
 
+# Devenv
+.devenv*
+devenv.local.nix
+devenv.local.yaml
