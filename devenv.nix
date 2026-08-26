@@ -18,6 +18,9 @@ in
       install.enable = true;
     };
   };
+  packages = with pkgs; [
+    lefthook
+  ];
 
   env = {
     PLAYWRIGHT_BROWSERS_PATH = "${pkgs-playwright.playwright.browsers}";
