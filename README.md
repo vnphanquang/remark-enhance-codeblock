@@ -69,7 +69,7 @@ To achieve this, follow these steps:
 
    const file = await unified()
    	.use(remarkParse)
-   	.use(remarkEnhanceCodeblock)
+   	.use(remarkEnhanceCodeblock, { /* plugin options */ })
    	.use(remarkRehype)
    	.use(rehypeStringify)
    	.process(input);
@@ -127,9 +127,9 @@ from regular HTML attributes. All attributes listed below are optional.
 
 Regular HTML attributes may be added to the meta string of the code element and will be passed on to
 the final HTML. Specifying an attribute will replace any existing one by default.
-Alternatively, one may add a `^` prefix to **prepend**, or `$` to **append** to existing attributes.
+Alternatively, one may add `^` prefix to **prepend**, or `$` to **append** to existing attributes.
 
-For example, to **append** some custom classes, one can do:
+For example, to **append** some custom classes:
 
 ````markdown
 ```js #title="script.js" $class="custom-codeblock"
@@ -214,7 +214,7 @@ remarkEnhanceCodeblock({ trim: 'both' });
 ### Texts and Internationalisation
 
 Text labels for buttons and switches in `remark-enhance-codeblock`.
-Even though the typing is permissive (every field is optional), it is recommended,
+Even though the schema is permissive (every field is optional), it is recommended,
 when supporting a different language, to provide all labels for a consistent user experience.
 
 ```typescript
@@ -293,13 +293,14 @@ remarkEnhanceCodeblock({
 });
 ```
 
-When customising icon classes, consider switching to the appropriate CSS strategy, as mentioned
+> [!NOTE]
+> When customising icon classes, consider switching to the appropriate CSS strategy, as mentioned
 in the [CSS Strategies](#css-strategies) section, for a smaller bundle size.
 
 ### Group Blockquote Marker
 
 The marker for group, i.e `> [!<marker>]` may be customised, even though this is typically not
-necessary, unless for some further remark transformation.
+necessary, unless for some further remark transformation is necessary.
 
 ```typescript
 type RemarkEnhanceCodeblockGroupMarker = `!${string}`;
@@ -374,7 +375,7 @@ for the most minimal bundle:
 ### CSS Layers
 
 Notice that the default entries imports "bare" CSS files into different [CSS layers](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@layer).
-This is my preferred approach; but they can also be imported directly to the default layer:
+This is my preferred approach, but they can also be imported directly to the default layer:
 
 ```css
 @import url('remark-enhance-codeblock/styles/bare/base.css');
@@ -391,7 +392,7 @@ They are named in a `--c-*` pattern and each has a default counterparts `--cd-*`
 }
 ```
 
-Specify any of the following variables where appropriate, typically on `:root` or where the design system lives. For example:
+To customise, specify any of the following variables where appropriate, typically on `:root` or where the design system lives. For example:
 
 ```css
 :root {
@@ -465,14 +466,14 @@ enhanceCodeblock({
 ## Problem Space and Focus
 
 This library is a compact and somewhat opinionated version of what I have used in several projects
-where sharing code vs blog posts or documentation was necessary. Existing solutions that I had found
-either relied too much on runtime Javascript, or were framework-specific.
+where there was a need to improve the experience of sharing code, both for writers and for readers,
+in blog posts or documentation. Existing solutions that I had found either relied too much on runtime
+Javascript, or were framework-specific.
 
 My focus here includes:
 
 - accessibility (to the best of my knowledge),
 - progressive enhancement: works without JS, enhanced when JS is available,
-- a convenient code-sharing experience when authoring technical content on the web,
 - utilisation of contemporary baseline platform features
   (e.g. CSS [anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning) and
   [@starting-style](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@starting-style)),
@@ -486,10 +487,10 @@ that purpose.
 ## Features
 
 - Optional header with title and file icon.
-- Can be collapsed in a accordion-like fashion.
-- Grouped multiple code blocks into a single tabbed interface.
+- Collapsible in an accordion-like fashion.
+- Grouping of multiple code blocks into a single tabbed interface.
 
-Features that require JS:
+Features that require JS, as of now:
 
 - Copy-to-clipboard
 - Fullscreen view
