@@ -11,7 +11,7 @@ import { unified } from 'unified';
 import { VFile } from 'vfile';
 
 // eslint-disable-next-line import-x/default
-import script from '../src/client.js?url';
+import script from '../src/client/index.js?url';
 import { remarkEnhanceCodeblock } from '../src/plugin';
 import style from '../src/styles/all.css?url';
 
