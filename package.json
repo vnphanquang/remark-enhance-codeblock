@@ -34,7 +34,7 @@
 		},
 		"./client": {
 			"types": "./types/index.d.ts",
-			"import": "./src/client.js"
+			"import": "./src/client/index.js"
 		},
 		"./styles/*.css": "./styles/*.css",
 		"./styles/bare/*.css": "./styles/bare/*.css"

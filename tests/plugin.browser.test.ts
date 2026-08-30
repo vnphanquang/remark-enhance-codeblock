@@ -202,7 +202,9 @@ describe('copy functionaility should work', async () => {
 
 	test('should revert to default state after specified time', async () => {
 		await setupPage(example6, {
-			copyTimeoutMs: 100, // set a short timeout for testing
+			copy: {
+				timeoutMs: 100, // set a short timeout for testing
+			},
 		});
 		const actionCopyLocator = page.getByRole('button', { name: DEFAULT_OPTIONS.intl.copy.default });
 
@@ -220,7 +222,9 @@ describe('copy functionaility should work', async () => {
 	test('use the custom copy function if provided', async () => {
 		const customCopyText = 'custom text';
 		await setupPage(example1, {
-			copy: () => customCopyText,
+			copy: {
+				fn: () => customCopyText,
+			},
 		});
 		const actionCopyLocator = page.getByRole('button', { name: DEFAULT_OPTIONS.intl.copy.default });
 		await actionCopyLocator.click();
@@ -231,7 +235,9 @@ describe('copy functionaility should work', async () => {
 		const spyOnWriteText = vi.spyOn(navigator.clipboard, 'writeText');
 		const customCopyText = '';
 		await setupPage(example1, {
-			copy: () => customCopyText,
+			copy: {
+				fn: () => customCopyText,
+			},
 		});
 		const actionCopyLocator = page.getByRole('button', { name: DEFAULT_OPTIONS.intl.copy.default });
 		await actionCopyLocator.click();

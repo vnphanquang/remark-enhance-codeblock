@@ -69,7 +69,7 @@ To achieve this, follow these steps:
 
    const file = await unified()
    	.use(remarkParse)
-   	.use(remarkEnhanceCodeblock, { /* plugin options */ })
+   	.use(remarkEnhanceCodeblock, {/* plugin options */})
    	.use(remarkRehype)
    	.use(rehypeStringify)
    	.process(input);
@@ -295,7 +295,7 @@ remarkEnhanceCodeblock({
 
 > [!NOTE]
 > When customising icon classes, consider switching to the appropriate CSS strategy, as mentioned
-in the [CSS Strategies](#css-strategies) section, for a smaller bundle size.
+> in the [CSS Strategies](#css-strategies) section, for a smaller bundle size.
 
 ### Group Blockquote Marker
 
@@ -433,10 +433,12 @@ Progressive enhancement options and their defaults:
 
 ```typescript
 interface EnhanceCodeBlockOptions {
-	/** instruction on what text to copy */
-	copy: EnhanceCodeBlockCopy;
-	/** how long to show the "copied" state before reverting back to the default state, in milliseconds */
-	copyTimeoutMs:
+	copy?: {
+	  /** instruction on what text to copy */
+	  fn: EnhanceCodeBlockCopyFn;
+	  /** how long to show the "copied" state before reverting back to the default state, in milliseconds */
+	  timeoutMs:
+	};
 }
 
 /**
@@ -445,7 +447,7 @@ interface EnhanceCodeBlockOptions {
  *          or any falsy value if implementing custom copy logic
  *          (e.g. use the legacy `execCommand('copy')` method)
  */
-type EnhanceCodeBlockCopy = (
+type EnhanceCodeBlockCopyFn = (
 	context: EnhanceCodeBlockCopyContext,
 ) => string | null | undefined | false | void;
 
@@ -458,8 +460,10 @@ interface EnhanceCodeBlockCopyContext {
 
 // default
 enhanceCodeblock({
-	copy: ({ pre }) => pre.textContent,
-	copyTimeoutMs: 3000,
+	copy: {
+	  fn: ({ pre }) => pre.textContent,
+	  timeoutMs: 3000,
+	},
 });
 ```
 
