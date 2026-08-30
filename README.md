@@ -434,10 +434,10 @@ Progressive enhancement options and their defaults:
 ```typescript
 interface EnhanceCodeBlockOptions {
 	copy?: {
-	  /** instruction on what text to copy */
-	  fn: EnhanceCodeBlockCopyFn;
-	  /** how long to show the "copied" state before reverting back to the default state, in milliseconds */
-	  timeoutMs:
+		/** instruction on what text to copy */
+		fn: EnhanceCodeBlockCopyFn;
+		/** how long to show the "copied" state before reverting back to the default state, in milliseconds */
+		timeoutMs: number;
 	};
 }
 
@@ -461,8 +461,8 @@ interface EnhanceCodeBlockCopyContext {
 // default
 enhanceCodeblock({
 	copy: {
-	  fn: ({ pre }) => pre.textContent,
-	  timeoutMs: 3000,
+		fn: ({ pre }) => pre.textContent,
+		timeoutMs: 3000,
 	},
 });
 ```
