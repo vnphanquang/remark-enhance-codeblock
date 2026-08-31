@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+
+### Minor Changes
+
+- [`25bc4e7`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/25bc4e73bb038cbee384815ceae133b0079c3582) Thanks [@vnphanquang](https://github.com/vnphanquang)! - add back missing package artifacts (styles & types)
+
 ## 1.0.0
 
 ### Major Changes
