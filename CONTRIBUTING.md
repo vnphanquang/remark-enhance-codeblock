@@ -22,11 +22,18 @@ If you have an idea and don't know where to start yet, consider [opening a discu
 
 ### Prerequisites
 
-| Tool       | Version            |
-| ---------- | ------------------ |
-| [Node]     | see [package.json] |
-| [pnpm]     | see [package.json] |
-| [Lefthook] | see [lefthook.yml] |
+| Tool         | Version            |
+| ------------ | ------------------ |
+| [Node]       | see [package.json] |
+| [pnpm]       | see [package.json] |
+| [Lefthook]   | see [lefthook.yml] |
+| [Playwright] | see [playwright]   |
+
+The project also supports [devenv]. Simply activate with `devenv shell` or set up [Auto Activation](https://devenv.sh/auto-activation/).
+
+### Tmux Template
+
+There is an executable bash script at the project root named [.tmux.template], which spawns a recommended [tmux] session for convenience.
 
 ## Code standard
 
@@ -67,10 +74,13 @@ To bypass hook (not recommended, for admin only), run `git commit` with the `--n
 [github.issues.open]: https://github.com/vnphanquang/remark-enhance-codeblock/issues?q=is%3Aissue+is%3Aopen
 [github.discussions]: https://github.com/vnphanquang/remark-enhance-codeblock/discussions
 [conventionalcommits]: https://www.conventionalcommits.org/en/v1.0.0/
-[lefthook]: https://lefthook.dev/
 [node]: https://nodejs.org/en/
 [pnpm]: https://pnpm.io/
 [eslint]: https://eslint.org/
 [prettier]: https://prettier.io/
 [lefthook.yml]: ./lefthook.yml
 [package.json]: ./package.json
+[.template.tmux]: ./.template.tmux
+[playwright]: https://playwright.dev/
+[devenv]: https://devenv.sh/
+[tmux]: https://github.com/tmux/tmux
