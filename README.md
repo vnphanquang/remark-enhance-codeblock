@@ -2,7 +2,11 @@
 
 a remark plugin to enhance markdown code block or group of code blocks
 
-[![MIT][license.badge]][license] [![npm.badge]][npm] [![codecov][codecov.badge]][codecov]
+[![Open on npmx.dev](https://npmx.dev/api/registry/badge/version/remark-enhance-codeblock)][npmx]
+[![Open on npmx.dev](https://npmx.dev/api/registry/badge/vulnerabilities/remark-enhance-codeblock)][npmx]
+[![See on bundlephobia](https://npmx.dev/api/registry/badge/size/remark-enhance-codeblock)](https://bundlephobia.com/package/remark-enhance-codeblock)
+[![See code coverage](https://codecov.io/github/vnphanquang/remark-enhance-codeblock/graph/badge.svg)](https://codecov.io/github/vnphanquang/remark-enhance-codeblock)
+[![See license](https://npmx.dev/api/registry/badge/license/remark-enhance-codeblock)](https://github.com/vnphanquang/remark-enhance-codeblock/blob/main/LICENSE)
 
 ## Installation
 
@@ -517,9 +521,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.
 
 <!-- header badges -->
 
-[license.badge]: https://img.shields.io/badge/license-MIT-blue.svg
-[license]: ./LICENSE
-[npm.badge]: https://img.shields.io/npm/v/remark-enhance-codeblock
-[npm]: https://npmx.dev/package/remark-enhance-codeblock
-[codecov]: https://codecov.io/github/vnphanquang/remark-enhance-codeblock
-[codecov.badge]: https://codecov.io/github/vnphanquang/remark-enhance-codeblock/graph/badge.svg
+[npmx]: https://npmx.dev/package/remark-enhance-codeblock
