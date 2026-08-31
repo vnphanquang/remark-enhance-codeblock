@@ -55,6 +55,9 @@ jobs:
       - name: Version packages
         id: version
         uses: changesets/action/version@v2
+        with:
+          commit-message: 'chore(release): changesets versioning & publication'
+          pr-title: 'Changesets: Versioning & Publication'
 
   pack:
     if: needs.select-mode.outputs.mode == 'publish'
@@ -99,3 +102,4 @@ jobs:
         uses: changesets/action/publish@v2
         with:
           pack-dir-artifact-id: ${{ needs.pack.outputs.pack-dir-artifact-id }}
+          create-github-releases: true

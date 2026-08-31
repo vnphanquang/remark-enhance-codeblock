@@ -60,9 +60,7 @@
 		"dts": "dts-buddy --write",
 		"test": "vitest --coverage --browser.headless",
 		"prepublishOnly": "pnpm dts && pnpm build:css && publint",
-		"ci:test": "vitest run --coverage --browser.headless --project=!visual",
-		"ci:version": "changeset version",
-		"ci:publish": "changeset tag && pnpm publish -r --no-git-checks --access public"
+		"ci:test": "vitest run --coverage --browser.headless --project=!visual"
 	},
 	"devDependencies": {
 		"@changesets/changelog-github": "^1.0.0",
