@@ -73,9 +73,6 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Build packages
-        run: npm build
-
       - name: Pack packages
         id: pack
         uses: changesets/action/pack@v2
