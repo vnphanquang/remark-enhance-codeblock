@@ -50,7 +50,6 @@
 		"access": "public"
 	},
 	"scripts": {
-		"prepare": "lefthook install",
 		"dev": "vite dev",
 		"lint:es": "eslint .",
 		"lint:style": "stylelint \"**/*.css\"",

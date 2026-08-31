@@ -36,6 +36,7 @@ in
     if [ "$nixPlaywrightBaseVersion" != "$npmPlaywrightBaseVersion" ]; then
         echo "❌ Playwright versions in nix ($nixPlaywrightBaseVersion in devenv.yaml) and npm ($npmPlaywrightBaseVersion in package.json) are not the same! Please adapt the configuration."
     fi
+		lefthook install
   '';
 
   enterShell = ''
