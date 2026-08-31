@@ -76,6 +76,10 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      - name: Build
+        shell: bash
+        run: pnpm build
+
       - name: Pack packages
         id: pack
         uses: changesets/action/pack@v2

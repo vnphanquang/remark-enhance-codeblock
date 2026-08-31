@@ -55,10 +55,10 @@
 		"lint:style": "stylelint \"**/*.css\"",
 		"lint": "run-p lint:*",
 		"format": "prettier . --check",
+		"build": "pnpm dts && pnpm build:css && publint",
 		"build:css": "postcss \"src/styles/*.css\" --dir styles --map && postcss \"src/styles/bare/*.css\" --dir styles/bare --map",
 		"dts": "dts-buddy --write",
 		"test": "vitest --coverage --browser.headless",
-		"prepublishOnly": "pnpm dts && pnpm build:css && publint",
 		"ci:test": "vitest run --coverage --browser.headless --project=!visual"
 	},
 	"devDependencies": {
