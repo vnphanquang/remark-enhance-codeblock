@@ -520,6 +520,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.
 [license.badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license]: ./LICENSE
 [npm.badge]: https://img.shields.io/npm/v/remark-enhance-codeblock
-[npm]: https://www.npmjs.com/package/remark-enhance-codeblock
+[npm]: https://npmx.dev/package/remark-enhance-codeblock
 [codecov]: https://codecov.io/github/vnphanquang/remark-enhance-codeblock
 [codecov.badge]: https://codecov.io/github/vnphanquang/remark-enhance-codeblock/graph/badge.svg
