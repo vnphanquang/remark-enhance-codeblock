@@ -7,6 +7,7 @@ runs:
       uses: pnpm/action-setup@v6
       with:
         cache: true
+        install: false
 
     - name: Install dependencies
       shell: bash
