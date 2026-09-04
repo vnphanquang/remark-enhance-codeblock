@@ -1,4 +1,4 @@
-import { make_node } from './make-node';
+import { make_node } from './make-node.js';
 
 /**
  * @template V

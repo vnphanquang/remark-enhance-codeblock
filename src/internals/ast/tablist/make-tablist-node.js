@@ -1,6 +1,6 @@
-import { make_node } from '../make-node';
+import { make_node } from '../make-node.js';
 
-import { make_tab_node } from './make-tab-node';
+import { make_tab_node } from './make-tab-node.js';
 
 /**
  * @param {import('./make-tab-node').MakeTabNodeInput[]} input

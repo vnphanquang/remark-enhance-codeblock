@@ -1,9 +1,9 @@
 /* eslint-disable jsdoc/reject-any-type */
 
-import { make_actions_node } from './actions/make-actions-node';
-import { make_node } from './make-node';
-import { make_title_node } from './make-title-node';
-import { make_tablist_node } from './tablist/make-tablist-node';
+import { make_actions_node } from './actions/make-actions-node.js';
+import { make_node } from './make-node.js';
+import { make_title_node } from './make-title-node.js';
+import { make_tablist_node } from './tablist/make-tablist-node.js';
 
 /**
  * @typedef MakeStandaloneHeaderNodeInput

@@ -1,5 +1,5 @@
-import { make_lang_node } from './make-lang-node';
-import { make_node } from './make-node';
+import { make_lang_node } from './make-lang-node.js';
+import { make_node } from './make-node.js';
 
 /**
  * @typedef MakeContentNodeInput

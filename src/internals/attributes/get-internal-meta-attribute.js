@@ -1,4 +1,4 @@
-import { InvalidMetaAttributeValueError } from '../../errors';
+import { InvalidMetaAttributeValueError } from '../../errors.js';
 
 /**
  * @template {string} A

@@ -1,6 +1,6 @@
 import { u } from 'unist-builder';
 
-import { make_node } from './make-node';
+import { make_node } from './make-node.js';
 
 /**
  * @param {import('../../types.private').Lang} lang

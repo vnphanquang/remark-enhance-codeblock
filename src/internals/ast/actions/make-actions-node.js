@@ -1,8 +1,8 @@
 import { make_node } from '../make-node';
 
-import { make_collapse_action_node } from './make-collapse-action-node';
-import { make_copy_action_node } from './make-copy-action-node';
-import { make_fullscreen_action_node } from './make-fullscreen-action-node';
+import { make_collapse_action_node } from './make-collapse-action-node.js';
+import { make_copy_action_node } from './make-copy-action-node.js';
+import { make_fullscreen_action_node } from './make-fullscreen-action-node.js';
 
 /**
  * @typedef MakeActionsNodeInput

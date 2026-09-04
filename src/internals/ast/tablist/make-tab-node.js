@@ -1,5 +1,5 @@
-import { make_node } from '../make-node';
-import { make_title_node } from '../make-title-node';
+import { make_node } from '../make-node.js';
+import { make_title_node } from '../make-title-node.js';
 
 /**
  * @typedef MakeTabNodeInput

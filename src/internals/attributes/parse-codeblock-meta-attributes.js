@@ -1,6 +1,6 @@
 import { parseAttributesFromMeta } from 'remark-transform-blockquote/meta';
 
-import { get_internal_meta_attribute } from './get-internal-meta-attribute';
+import { get_internal_meta_attribute } from './get-internal-meta-attribute.js';
 
 export const TRIM_ALLOWLIST = /** @type {const} */(['both', 'start', 'end', 'none']);
 

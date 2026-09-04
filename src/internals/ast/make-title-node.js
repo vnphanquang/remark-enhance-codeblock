@@ -1,7 +1,7 @@
 import { u } from 'unist-builder';
 
-import { make_icon_node } from './make-icon-node';
-import { make_node } from './make-node';
+import { make_icon_node } from './make-icon-node.js';
+import { make_node } from './make-node.js';
 
 /**
  * @typedef MakeTitleNodeInput

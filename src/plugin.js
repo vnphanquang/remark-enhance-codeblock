@@ -2,12 +2,12 @@ import { remarkTransformBlockquote } from 'remark-transform-blockquote';
 import { mergeMetaAttributes } from 'remark-transform-blockquote/meta';
 import { SKIP, visit } from 'unist-util-visit';
 
-import { make_block_node } from './internals/ast/make-block-node';
-import { make_header_node } from './internals/ast/make-header-node';
-import { get_internal_meta_attribute } from './internals/attributes/get-internal-meta-attribute';
-import { parse_codeblock_meta_attributes } from './internals/attributes/parse-codeblock-meta-attributes';
+import { make_block_node } from './internals/ast/make-block-node.js';
+import { make_header_node } from './internals/ast/make-header-node.js';
+import { get_internal_meta_attribute } from './internals/attributes/get-internal-meta-attribute.js';
+import { parse_codeblock_meta_attributes } from './internals/attributes/parse-codeblock-meta-attributes.js';
 import { create_id } from './internals/create-id.js';
-import { resolve_options } from './internals/resolve-options';
+import { resolve_options } from './internals/resolve-options.js';
 
 /**
  * @param {import('./types.public').RemarkEnhanceCodeblockOptions} [options] - configure the plugin behavior
