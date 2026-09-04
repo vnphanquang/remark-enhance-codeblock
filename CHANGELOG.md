@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.2
+
+### Patch Changes
+
+- [`fec711c`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/fec711cc7c242ec01c14d9c1a8f02ede27e86e53) Thanks [@vnphanquang](https://github.com/vnphanquang)! - add remaining missing `.js` in import (my bad)
+
 ## 1.1.1
 
 ### Patch Changes
