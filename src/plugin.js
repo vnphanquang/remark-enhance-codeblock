@@ -10,8 +10,7 @@ import { create_id } from './internals/create-id.js';
 import { resolve_options } from './internals/resolve-options.js';
 
 /**
- * @param {import('./types.public').RemarkEnhanceCodeblockOptions} [options] - configure the plugin behavior
- * @returns {import('unified').Transformer<import('mdast').Root, import('mdast').Root>}
+ * @type {import('unified').Plugin<[import('./types.public').RemarkEnhanceCodeblockOptions?], import('mdast').Root>}
  */
 export function remarkEnhanceCodeblock(options = {}) {
 	const o = resolve_options(options);
@@ -35,7 +34,9 @@ export function remarkEnhanceCodeblock(options = {}) {
 							// clear all immediate children that are not of type 'code'
 							node.children = node.children.filter((child) => child.type === 'code');
 
-							const fileIcon = get_internal_meta_attribute(meta?.attributes, 'file-icon', 'boolean')?.value ?? null
+							const fileIcon =
+								get_internal_meta_attribute(meta?.attributes, 'file-icon', 'boolean')?.value ??
+								null;
 
 							// register this group for later reference
 							groupMap.set(node, {

@@ -518,7 +518,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.
 
 [esm.sh]: https://esm.sh/
 [importmap]: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap
-
-<!-- header badges -->
-
 [npmx]: https://npmx.dev/package/remark-enhance-codeblock
