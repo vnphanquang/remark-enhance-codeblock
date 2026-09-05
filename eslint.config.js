@@ -41,4 +41,18 @@ export default await defineConfig(
 			'import-x/no-duplicates': 'off',
 		},
 	},
+	{
+		files: ['**/*.js'],
+		rules: {
+			'import-x/extensions': [
+				'error',
+				'always',
+				{
+					js: 'always',
+					ignorePackages: true,
+					fix: true,
+				},
+			],
+		},
+	},
 );
