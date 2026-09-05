@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.3
+
+### Patch Changes
+
+- [`20cdd81`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/20cdd818067f4ef97c966fffd839de361e6c139e) Thanks [@vnphanquang](https://github.com/vnphanquang)! - conform to unified Plugin typing for broader typescript support
+
 ## 1.1.2
 
 ### Patch Changes
