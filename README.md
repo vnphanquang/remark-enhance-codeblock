@@ -86,7 +86,7 @@ To achieve this, follow these steps:
 2. Add the necessary CSS where applicable:
 
    ```css
-   @import 'remark-enhance-codeblock/styles/app.css';
+   @import 'remark-enhance-codeblock/styles/all.css';
    /* or via CDN: */
    @import 'https://esm.sh/remark-enhance-codeblock/styles/all.css';
    ```
@@ -406,7 +406,7 @@ type RemarkEnhanceCodeblockNodeType = string;
 
 ## CSS Strategies
 
-The stylesheet mentioned in [Usage](#usage) section, `.../styles/app.css`, is the maximal bundle that
+The stylesheet mentioned in [Usage](#usage) section, `.../styles/all.css`, is the maximal bundle that
 includes all features:
 
 ```css
