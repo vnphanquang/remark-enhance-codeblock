@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0
+
+### Minor Changes
+
+- [`e72ea39`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/e72ea3922a9fff23246aeecb97679bde79321db6) Thanks [@vnphanquang](https://github.com/vnphanquang)! - Allow more complex i18n setup via `#locale` enhancement attribute or `filename`
+
 ## 1.1.3
 
 ### Patch Changes
