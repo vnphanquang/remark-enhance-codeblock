@@ -307,7 +307,7 @@ For [code group](#group-of-code-blocks), set the `#locale` enhancement attribute
 #### Per-File
 
 To support a per-file setup, specify translation based on `filename`.
-For example, suppose content is written in `content.<locale>md` files:
+For example, suppose content is written in `content.<locale>.md` files:
 
 ```typescript
 import { defaulOptions, type RemarkEnhanceCodeblockIntlSpecs } from 'remark-enhance-codeblock';
