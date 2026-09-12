@@ -1,6 +1,7 @@
 import type { Blockquote } from 'mdast';
 
 import type {
+	RemarkEnhanceCodeblockIntlSpecs,
 	RemarkEnhanceCodeblockOptions,
 	RemarkEnhanceCodeblockTrimStrategy,
 } from './types.public';
@@ -14,7 +15,9 @@ export type DeepRequired<T> = {
 			: T[K];
 };
 
-export type ResolvedOptions = DeepRequired<RemarkEnhanceCodeblockOptions>;
+export type ResolvedOptions = Omit<DeepRequired<RemarkEnhanceCodeblockOptions>, 'intl'> & {
+	intl: DeepRequired<RemarkEnhanceCodeblockIntlSpecs>;
+};
 
 /**
  * `null`: not specified, use default behavior
@@ -28,6 +31,7 @@ export type InternalMetaAttributes = {
 	trim: RemarkEnhanceCodeblockTrimStrategy | null;
 	title: string | null;
 	fileIcon: FileIconSpecifier;
+	locale?: string;
 };
 
 export interface GroupTabContext {
@@ -41,6 +45,7 @@ export interface GroupContext {
 	id: string;
 	fileIcon: FileIconSpecifier;
 	tabs: GroupTabContext[];
+	locale?: string;
 }
 
 export type GroupMapping = Map<Blockquote, GroupContext>;

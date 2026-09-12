@@ -126,6 +126,7 @@ from regular HTML attributes. All attributes listed below are optional.
 | `#title`     | string  | none                                                                               |                                        | title to display in the header            |
 | `#trim`      | string  | from [Plugin Options](#plugin-options)                                             | `'both'`, `'start'`, `'end'`, `'none'` | trim strategy for the code content        |
 | `#file-icon` | boolean | from [Group](#group-of-code-blocks), if any, and [Plugin Options](#plugin-options) | `true`, `false`, blank means `true`    | whether to show file icon preceding title |
+| `#locale`    | string  | from [Group](#group-of-code-blocks), if any                                        |                                        | assist with i18n setup                    |
 
 #### Passing Additional HTML Attributes
 
@@ -207,10 +208,11 @@ in which case showing file icons may not be appropriate:
 The global trim strategy for code content:
 
 ```typescript
-type RemarkEnhanceCodeblockTrimStrategy = 'start' | 'end' | 'both' | 'none';
-
-// default:
+// ============== DEFAULT ================
 remarkEnhanceCodeblock({ trim: 'both' });
+
+// ============== API ================
+type RemarkEnhanceCodeblockTrimStrategy = 'start' | 'end' | 'both' | 'none';
 ```
 
 `#trim` attribute on individual code blocks will take precedence over the global trim strategy.
@@ -222,7 +224,35 @@ Even though the schema is permissive (every field is optional), it is recommende
 when supporting a different language, to provide all labels for a consistent user experience.
 
 ```typescript
-export interface RemarkEnhanceCodeblockIntl {
+// ============== DEFAULT ================
+remarkEnhanceCodeblock({
+	intl: {
+		copy: {
+			default: 'Copy',
+			copied: 'Copied',
+		},
+		fullscreen: {
+			open: 'Open fullscreen',
+			exit: 'Exit fullscreen',
+		},
+		collapse: 'Collapse',
+	},
+});
+
+// ============== API ================
+export type RemarkEnhanceCodeblockIntl =
+	RemarkEnhanceCodeblockIntlSpecs | RemarkEnhanceCodeblockIntlFn;
+
+export type RemarkEnhanceCodeblockIntlFn = (
+	input: RemarkEnhanceCodeblockIntlFnInput,
+) => RemarkEnhanceCodeblockIntlSpecs;
+
+export interface RemarkEnhanceCodeblockIntlFnInput {
+	filename?: string;
+	locale?: string;
+}
+
+export interface RemarkEnhanceCodeblockIntlSpecs {
 	copy?: {
 		/** aria-label for the copy button */
 		default?: string;
@@ -238,22 +268,63 @@ export interface RemarkEnhanceCodeblockIntl {
 	/** aria-label for the collapse switch */
 	collapse?: string;
 }
+```
 
-// default:
-remarkEnhanceCodeblock({
-	intl: {
-		copy: {
-			default: 'Copy',
-			copied: 'Copied',
-		},
-		fullscreen: {
-			open: 'Open fullscreen',
-			exit: 'Exit fullscreen',
-		},
-		collapse: 'Collapse',
-	},
+#### Per-Block
+
+Translation may be provided based on the `#locale` [enhancement attribue](#enhancement-attributes) on a codeblock instance.
+For example, the following setup:
+
+```typescript
+import { defaulOptions, type RemarkEnhanceCodeblockIntlSpecs } from 'remark-enhance-codeblock';
+
+const SPECS = {
+	vi: { /** ... */ }
+	en: defaultOptions.intl,
+} satisfies Record<string, RemarkEnhanceCodeblockIntlSpecs>
+
+remarkEnhanceCodeblock(({ locale }) => SPECS[locale || 'en'] ?? SPECS.en);
+```
+
+...will support this pattern:
+
+````markdown
+```javascript #locale=vi
+console.log('Xin chào');
+```
+````
+
+For [code group](#group-of-code-blocks), set the `#locale` enhancement attribute on the group instead:
+
+````markdown
+> [!CODEGROUP] `#locale=vi`
+>
+> ```javascript
+> console.log('Xin chào');
+> ```
+````
+
+#### Per-File
+
+To support a per-file setup, specify translation based on `filename`.
+For example, suppose content is written in `content.<locale>md` files:
+
+```typescript
+import { defaulOptions, type RemarkEnhanceCodeblockIntlSpecs } from 'remark-enhance-codeblock';
+
+const SPECS = {
+	vi: { /** ... */ }
+	en: defaultOptions.intl,
+} satisfies Record<string, RemarkEnhanceCodeblockIntlSpecs>
+
+remarkEnhanceCodeblock(({ filename }) => {
+  const locale = filename?.split('.').at(-2) ?? 'en';
+	return SPECS[locale] ?? SPECS.en
 });
 ```
+
+> [!NOTE]
+> `filename` is from [vfile](https://github.com/vfile/vfile) and its availability depends on your `unified` setup.
 
 ### Icon Classes
 
@@ -263,6 +334,23 @@ Icon classes may be customised, for example, to use different icon sources or ta
 design system / CSS framework such as Tailwind (e.g. using [phosphor-icons-tailwindcss](https://github.com/vnphanquang/phosphor-icons-tailwindcss)).
 
 ```typescript
+// ============== DEFAULT ================
+remarkEnhanceCodeblock({
+	iconClasses: {
+		copy: {
+			default: 'i i-clipboard',
+			copied: 'i i-clipboard-text',
+		},
+		fullscreen: {
+			open: 'i i-corners-out',
+			exit: 'i i-corners-in',
+		},
+		collapse: 'i i-caret-up',
+		file: (lang) => `i i-file${lang ? ` i-file-${lang}` : ''}`;
+	},
+});
+
+// ============== API ================
 export interface RemarkEnhanceCodeblockIconClasses {
 	/** icon class names for the copy button */
 	copy?: {
@@ -280,21 +368,6 @@ export interface RemarkEnhanceCodeblockIconClasses {
 	file?: (lang?: string | null | undefined) => string;
 }
 
-// default:
-remarkEnhanceCodeblock({
-	iconClasses: {
-		copy: {
-			default: 'i i-clipboard',
-			copied: 'i i-clipboard-text',
-		},
-		fullscreen: {
-			open: 'i i-corners-out',
-			exit: 'i i-corners-in',
-		},
-		collapse: 'i i-caret-up',
-		file: (lang) => `i i-file${lang ? ` i-file-${lang}` : ''}`;
-	},
-});
 ```
 
 > [!NOTE]
@@ -307,10 +380,11 @@ The marker for group, i.e `> [!<marker>]` may be customised, even though this is
 necessary, unless for some further remark transformation is necessary.
 
 ```typescript
-type RemarkEnhanceCodeblockGroupMarker = `!${string}`;
-
-// default:
+// ============== DEFAULT ================
 remarkEnhanceCodeblock({ groupBlockquoteMarker: '!CODEGROUP' });
+
+// ============== API ================
+type RemarkEnhanceCodeblockGroupMarker = `!${string}`;
 ```
 
 > [!NOTE]
@@ -323,10 +397,11 @@ are added to the syntax tree, marked for HTML output with `rehype` by `data.hPro
 If additional transformation is necessary, the node type may be customised:
 
 ```typescript
-type RemarkEnhanceCodeblockNodeType = string;
-
-// default
+// ============== DEFAULT ================
 remarkEnhanceCodeblock({ nodeType: 'enhance-codeblock' });
+
+// ============== API ================
+type RemarkEnhanceCodeblockNodeType = string;
 ```
 
 ## CSS Strategies
@@ -436,6 +511,15 @@ Default counterparts are defined on `.codeblock` for standalone code blocks, or 
 Progressive enhancement options and their defaults:
 
 ```typescript
+// ============== DEFAULT ================
+enhanceCodeblock({
+	copy: {
+		fn: ({ pre }) => pre.textContent,
+		timeoutMs: 3000,
+	},
+});
+
+// ============== API ================
 interface EnhanceCodeBlockOptions {
 	copy?: {
 		/** instruction on what text to copy */
@@ -461,14 +545,6 @@ interface EnhanceCodeBlockCopyContext {
 	/** `button` element that was clicked to trigger the copy action */
 	btn: HTMLButtonElement;
 }
-
-// default
-enhanceCodeblock({
-	copy: {
-		fn: ({ pre }) => pre.textContent,
-		timeoutMs: 3000,
-	},
-});
 ```
 
 ## Problem Space and Focus

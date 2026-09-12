@@ -2,7 +2,6 @@
 import dedent from 'dedent';
 import { toHtml } from 'hast-util-to-html';
 import type { Code, Root } from 'mdast';
-import { fromMarkdown } from 'mdast-util-from-markdown';
 import { toHast } from 'mdast-util-to-hast';
 import rehypeStringify from 'rehype-stringify';
 import remarkParse from 'remark-parse';
@@ -91,10 +90,11 @@ export function mdast2html(node: UnistNode): string {
 	return html;
 }
 
-export function markdown2hast(markdown: string, options?: RemarkEnhanceCodeblockOptions) {
-	const mdast = fromMarkdown(markdown);
-	remarkEnhanceCodeblock(options)(mdast as any, new VFile(), () => {});
-	return toHast(mdast);
+export async function markdown2hast(markdown: string | VFile, options?: RemarkEnhanceCodeblockOptions) {
+	const process = unified().use(remarkParse).use(remarkEnhanceCodeblock, options);
+	const parsed = process.parse(markdown);
+	const runned = await process.run(parsed, markdown);
+	return toHast(runned);
 }
 
 export function mdast2hast(node: UnistNode) {

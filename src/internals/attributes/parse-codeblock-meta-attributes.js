@@ -14,12 +14,14 @@ export function parse_codeblock_meta_attributes(node) {
 	const trim = get_internal_meta_attribute(attributes, 'trim', 'string', TRIM_ALLOWLIST);
 	const title = get_internal_meta_attribute(attributes, 'title', 'string');
 	const fileIcon = get_internal_meta_attribute(attributes, 'file-icon', 'boolean');
+	const locale = get_internal_meta_attribute(attributes, 'locale', 'string');
 	return {
 		attributes,
 		internals: {
 			trim: trim?.value || null,
 			title: title?.value || null,
 			fileIcon: fileIcon?.value ?? null,
+			locale: locale?.value,
 		},
 	};
 }

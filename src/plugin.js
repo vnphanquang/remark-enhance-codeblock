@@ -7,7 +7,7 @@ import { make_header_node } from './internals/ast/make-header-node.js';
 import { get_internal_meta_attribute } from './internals/attributes/get-internal-meta-attribute.js';
 import { parse_codeblock_meta_attributes } from './internals/attributes/parse-codeblock-meta-attributes.js';
 import { create_id } from './internals/create-id.js';
-import { resolve_options } from './internals/resolve-options.js';
+import { resolve_intl, resolve_options } from './internals/resolve-options.js';
 
 /**
  * @type {import('unified').Plugin<[import('./types.public').RemarkEnhanceCodeblockOptions?], import('mdast').Root>}
@@ -37,12 +37,18 @@ export function remarkEnhanceCodeblock(options = {}) {
 							const fileIcon =
 								get_internal_meta_attribute(meta?.attributes, 'file-icon', 'boolean')?.value ??
 								null;
+							const locale = get_internal_meta_attribute(
+								meta?.attributes,
+								'locale',
+								'string',
+							)?.value;
 
 							// register this group for later reference
 							groupMap.set(node, {
 								id: create_id(),
 								tabs: [],
 								fileIcon,
+								locale,
 							});
 						},
 					},
@@ -57,6 +63,18 @@ export function remarkEnhanceCodeblock(options = {}) {
 			if (index === undefined || !parent) return;
 
 			const { attributes, internals } = parse_codeblock_meta_attributes(node);
+			const group = groupMap.get(/** @type {import('mdast').Blockquote} */ (parent));
+
+			const intlContext = {
+				locale: group?.locale || internals.locale,
+				filename: file.path,
+			};
+			if (group?.locale && internals.locale) {
+				console.warn(
+					'[remark-enhance-codeblock] detected #locale on group but also on its code blocks. Locale on group will take precendence because i18n elements are shared in code group',
+				);
+			}
+			let intl = resolve_intl(intlContext, options.intl);
 
 			const trim = internals?.trim || o.trim;
 			switch (trim) {
@@ -70,8 +88,6 @@ export function remarkEnhanceCodeblock(options = {}) {
 					node.value = node.value.trim();
 					break;
 			}
-
-			const group = groupMap.get(/** @type {import('mdast').Blockquote} */ (parent));
 
 			/** @type {ReturnType<make_block_node>} */
 			let block;
@@ -98,7 +114,7 @@ export function remarkEnhanceCodeblock(options = {}) {
 						title: internals.title,
 						code: node,
 						fileIcon: internals.fileIcon ?? true,
-						intl: o.intl,
+						intl: intl,
 						iconClasses: o.iconClasses,
 					},
 					astMakeContext,
@@ -114,11 +130,16 @@ export function remarkEnhanceCodeblock(options = {}) {
 
 		// 3. Loop back all groups, add headers
 		for (const [group, groupContext] of groupMap.entries()) {
+			const intlContext = {
+				locale: groupContext?.locale,
+				filename: file.path,
+			};
+			let intl = resolve_intl(intlContext, options.intl);
 			const header = make_header_node(
 				{
 					variant: 'group',
 					group: groupContext,
-					intl: o.intl,
+					intl: intl,
 					iconClasses: o.iconClasses,
 				},
 				astMakeContext,

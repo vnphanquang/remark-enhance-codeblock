@@ -1,11 +1,29 @@
 export type RemarkEnhanceCodeblockTrimStrategy = 'start' | 'end' | 'both' | 'none';
 
+export type RemarkEnhanceCodeblockIntl =
+	RemarkEnhanceCodeblockIntlSpecs | RemarkEnhanceCodeblockIntlFn;
+export type RemarkEnhanceCodeblockIntlFn = (
+	input: RemarkEnhanceCodeblockIntlFnInput,
+) => RemarkEnhanceCodeblockIntlSpecs;
+
+export interface RemarkEnhanceCodeblockIntlFnInput {
+	/**
+	 * the filename from `vfile`.
+	 * Note that, this may or may not be available depending on the way your `unified` pipeline is set up
+	 */
+	filename?: string;
+	/**
+	 * value of the `#locale` enhancement attribute set on the codeblock instance, if any
+	 */
+	locale?: string;
+}
+
 /**
  * text labels for buttons and switches in `remark-enhance-codeblock`. Even though the
  * typing is permissive (every field is optional), it is recommended to provide all labels for
  * a consistent user experience.
  */
-export interface RemarkEnhanceCodeblockIntl {
+export interface RemarkEnhanceCodeblockIntlSpecs {
 	copy?: {
 		/**
 		 * aria-label for the copy button
