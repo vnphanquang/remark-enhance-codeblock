@@ -56,7 +56,7 @@
 		"lint": "run-p lint:*",
 		"format": "prettier . --check",
 		"build": "pnpm dts && pnpm build:css && publint",
-		"build:css": "postcss \"src/styles/*.css\" --dir styles --map && postcss \"src/styles/bare/*.css\" --dir styles/bare --map",
+		"build:css": "postcss \"src/styles/*.css\" --dir styles && postcss \"src/styles/bare/*.css\" --dir styles/bare",
 		"dts": "dts-buddy --write",
 		"test": "vitest --coverage --browser.headless",
 		"ci:test": "vitest run --coverage --browser.headless --project=!visual"
