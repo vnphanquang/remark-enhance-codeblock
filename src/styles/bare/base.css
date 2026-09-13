@@ -43,6 +43,7 @@
 	border-width: var(--c-border-width, var(--cd-border-width));
 	border-radius: var(--c-border-radius, var(--cd-border-radius));
 
+	font-family: var(--c-font-family, var(--cd-font-family));
 	font-size: var(--c-font-size, var(--cd-font-size));
 
 	&:fullscreen {
@@ -295,4 +296,9 @@
 pre {
 	margin: 0;
 	padding-block: var(--c-padding-block, var(--cd-padding-block));
+	font-family: inherit;
+}
+
+code {
+	font-family: inherit;
 }
