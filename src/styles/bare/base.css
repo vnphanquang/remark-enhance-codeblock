@@ -293,7 +293,6 @@
 }
 
 pre {
-	width: max-content;
 	margin: 0;
 	padding-block: var(--c-padding-block, var(--cd-padding-block));
 }
