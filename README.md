@@ -493,6 +493,7 @@ To customise, specify any of the following variables where appropriate, typicall
 | `--c-border-radius`                 | `--cd-border-radius`                 | `0`                                                       |
 | `--c-focus-outline-color`           | `--cd-focus-outline-color`           | `blue`                                                    |
 | `--c-focus-outline-width`           | `--cd-focus-outline-width`           | `calc(var(--c-border-width, var(--cd-border-width)) * 2)` |
+| `--c-header-font-family`            | `--cd-header-font-family`            | `sans-serif`                                              |
 | `--c-header-bg`                     | `--cd-header-bg`                     | `light-dark(#f7f7f7, #151515)`                            |
 | `--c-content-max-height`            | `--cd-content-max-height`            | `30dvh`                                                   |
 | `--c-content-bg`                    | `--cd-content-bg`                    | `light-dark(white, black)`                                |

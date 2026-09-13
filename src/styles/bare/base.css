@@ -28,6 +28,7 @@
 	--cd-focus-outline-color: blue;
 	--cd-focus-outline-width: calc(var(--c-border-width, var(--cd-border-width)) * 2);
 	--cd-header-bg: light-dark(#f7f7f7, #151515);
+	--cd-header-font-family: sans-serif;
 	--cd-content-max-height: 30dvh;
 	--cd-content-bg: light-dark(white, black);
 	--cd-transition-duration: 120ms;
@@ -72,6 +73,8 @@
 	border-block-end-width: var(--c-border-width, var(--cd-border-width));
 	border-start-start-radius: var(--c-border-radius, var(--cd-border-radius));
 	border-start-end-radius: var(--c-border-radius, var(--cd-border-radius));
+
+	font-family: var(--c-header-font-family, var(--cd-header-font-family));
 
 	background-color: var(--c-header-bg, var(--cd-header-bg));
 }
