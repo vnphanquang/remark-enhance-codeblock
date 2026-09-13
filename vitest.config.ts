@@ -21,7 +21,7 @@ export default defineConfig({
 		coverage: {
 			provider: 'v8',
 			reporter: ['text', 'html', 'lcov'],
-			exclude: ['tests/**/*', '**/*.css'],
+			exclude: ['tests/**/*', '**/*.css', 'src/**/types.public.js'],
 		},
 		projects: [
 			{
