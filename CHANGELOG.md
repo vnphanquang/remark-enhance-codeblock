@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.1
+
+### Patch Changes
+
+- [`520c571`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/520c571bfd8d5a6b6d049a49648fcc5ac9b01a7d) Thanks [@vnphanquang](https://github.com/vnphanquang)! - correct docs: should be `all.css`, not `app.css`
+
+- [`d39dd93`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/d39dd93faa94c04d67c28a2c5ec2906a3c1cdd93) Thanks [@vnphanquang](https://github.com/vnphanquang)! - add `svelte-ignore` comment to silence a11y warnings (minor issue, see commit for details). Allow turning off this behavior by setting `slienceSvelteA11yWarnings` to `false`
+
 ## 1.2.0
 
 ### Minor Changes
