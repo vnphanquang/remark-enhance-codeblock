@@ -38,6 +38,9 @@ export default defineConfig({
 					browser: {
 						enabled: true,
 						provider: playwright({
+							launchOptions: {
+								executablePath: process.env.PLAYWRIGHT_LAUNCH_OPTIONS_EXECUTABLE_PATH,
+							},
 							contextOptions: {
 								permissions: ['clipboard-read', 'clipboard-write'],
 							},
@@ -53,7 +56,11 @@ export default defineConfig({
 					name: 'visual',
 					browser: {
 						enabled: true,
-						provider: playwright(),
+						provider: playwright({
+							launchOptions: {
+								executablePath: process.env.PLAYWRIGHT_LAUNCH_OPTIONS_EXECUTABLE_PATH,
+							},
+						}),
 						headless: true,
 						instances: [
 							{
