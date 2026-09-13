@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.2
+
+### Patch Changes
+
+- [`cbe0c75`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/cbe0c754d7efe51e598a8a25bd5b56acb7d12d6f) Thanks [@vnphanquang](https://github.com/vnphanquang)! - generate inline source map for CSS
+
 ## 1.2.1
 
 ### Patch Changes
