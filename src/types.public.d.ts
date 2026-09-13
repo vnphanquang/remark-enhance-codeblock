@@ -111,4 +111,17 @@ export interface RemarkEnhanceCodeblockOptions {
 	 * @default `enhance-codeblock`
 	 */
 	nodeType?: string;
+	/**
+	 * When the plugin is used to convert markdown to an intermediate Svelte code, the Svelte compiler
+	 * may pick up the following accessibility issues:
+	 * - a11y-no-noninteractive-tabindex
+	 * - a11y-no-interactive-element-to-noninteractive-role
+	 *
+	 * This option is on by default to avoid polluting logs.
+	 *
+	 * Note that, these issues surround the use of `<label>` for interactive tabbing within group of
+	 * codeblocks. This is to support tabbing even when JS is not available. Until I can find a better
+	 * solution or modern HTML becomes better, I'm sticking with the current setup.
+	 */
+	silenceSvelteA11yWarnings?: boolean;
 }

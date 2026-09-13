@@ -147,6 +147,14 @@ export function remarkEnhanceCodeblock(options = {}) {
 			group.children.unshift(/** @type {import('mdast').BlockContent} */ (header));
 		}
 
+		if (o.silenceSvelteA11yWarnings && tree && Array.isArray(tree.children)) {
+			tree.children.unshift({
+				type: 'html',
+				value:
+					'<!-- svelte-ignore a11y_no_noninteractive_tabindex a11y_no_noninteractive_element_to_interactive_role -->',
+			});
+		}
+
 		return next();
 	};
 }

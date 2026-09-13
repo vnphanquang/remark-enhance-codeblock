@@ -9,3 +9,5 @@ export default (ctx) => ({
 		}),
 	],
 });
+
+// FIXME: map seems broken when importing in real project

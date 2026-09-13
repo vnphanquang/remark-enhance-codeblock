@@ -31,6 +31,7 @@ export const DEFAULT_OPTIONS = /** @type {import('../types.private').ResolvedOpt
 			return `i i-file${lang ? ` i-file-${lang}` : ''}`;
 		},
 	},
+	silenceSvelteA11yWarnings: true,
 });
 
 /**
@@ -57,6 +58,8 @@ export function resolve_options(options = {}) {
 			collapse: options?.iconClasses?.collapse || DEFAULT_OPTIONS.iconClasses.collapse,
 			file: options?.iconClasses?.file || DEFAULT_OPTIONS.iconClasses.file,
 		},
+		silenceSvelteA11yWarnings:
+			options?.silenceSvelteA11yWarnings ?? DEFAULT_OPTIONS.silenceSvelteA11yWarnings,
 	};
 }
 
