@@ -45,7 +45,12 @@ export default defineConfig({
 								permissions: ['clipboard-read', 'clipboard-write'],
 							},
 						}),
-						instances: [{ browser: 'chromium' }],
+						instances: [
+							{
+								browser: 'chromium',
+								viewport: { width: 800, height: 600 },
+							},
+						],
 						commands: { emulateMedia },
 					},
 				},
