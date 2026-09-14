@@ -135,7 +135,7 @@ describe('lang is opaque until hover', () => {
 	});
 });
 
-test('collapse functionaility should work', async () => {
+test('collapse functionality should work', async () => {
 	const main = await setupPage(example4);
 	const collapseSwitch = page.getByRole('switch', { name: DEFAULT_OPTIONS.intl.collapse });
 	const collapseLocator = page.getByLabelText(DEFAULT_OPTIONS.intl.collapse);
@@ -149,7 +149,7 @@ test('collapse functionaility should work', async () => {
 	await expect.element(collapseSwitch).toBeChecked();
 });
 
-describe('copy functionaility should work', async () => {
+describe('copy functionality should work', async () => {
 	test('standalone', async () => {
 		const main = await setupPage(example1);
 		const content = main.querySelector('pre')!.textContent!;
@@ -264,7 +264,7 @@ describe('copy functionaility should work', async () => {
 	});
 });
 
-describe('fullscreen functionaility should work', () => {
+describe('fullscreen functionality should work', () => {
 	test('can open and close', async () => {
 		const main = await setupPage(example3);
 		// open fullscreen
