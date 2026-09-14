@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.3
+
+### Patch Changes
+
+- [`73611a4`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/73611a4dbb84d80f45f403cf05331ff10070cf1d) Thanks [@vnphanquang](https://github.com/vnphanquang)! - scope CSS inside `.codeblock-root` to avoid global side-effect
+
+- [`c95dc2e`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/c95dc2e75768b8d0378db3d21f492bb0b8051422) Thanks [@vnphanquang](https://github.com/vnphanquang)! - add missing `font-family` specs
+
+- [`8508422`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/850842213e234934ab6d9fe9db4f9fdc2c38cd78) Thanks [@vnphanquang](https://github.com/vnphanquang)! - add `--c-header-font-family`
+
 ## 1.2.2
 
 ### Patch Changes
