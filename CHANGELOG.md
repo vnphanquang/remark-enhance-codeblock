@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.4
+
+### Patch Changes
+
+- [`b62922f`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/b62922f0c24850902ba0ebf68e174754563c3d7a) Thanks [@vnphanquang](https://github.com/vnphanquang)! - increase z-index of `.codeblock-lang` to 2, making sure it is on top of the code content
+
 ## 1.2.3
 
 ### Patch Changes
