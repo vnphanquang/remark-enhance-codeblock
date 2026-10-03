@@ -229,7 +229,7 @@
 
 	interpolate-size: allow-keywords;
 	height: auto;
-	max-height: var(--c-max-height, var(--cd-content-max-height));
+	max-height: var(--c-content-max-height, var(--cd-content-max-height));
 	padding-inline: var(--c-padding-inline, var(--cd-padding-inline));
 	border-end-start-radius: var(--c-border-radius, var(--cd-border-radius));
 	border-end-end-radius: var(--c-border-radius, var(--cd-border-radius));
