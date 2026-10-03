@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.5
+
+### Patch Changes
+
+- [`ce2931b`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/ce2931b485d224d02249e4401bf76d64106b36a1) Thanks [@vnphanquang](https://github.com/vnphanquang)! - reference `--c-content-max-height` correctly
+
 ## 1.2.4
 
 ### Patch Changes
