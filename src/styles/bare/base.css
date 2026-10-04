@@ -38,6 +38,10 @@
 		font-size: var(--font-size-fullscreen, var(--cd-font-size-fullscreen));
 	}
 
+	&:not(:has(.codeblock-header)):fullscreen {
+		grid-template-rows: 1fr;
+	}
+
 	& .sr-only {
 		position: absolute;
 
