@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.6
+
+### Patch Changes
+
+- [`cd9360e`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/cd9360eb1306ec4a067c23a78959022ac21a9d24) Thanks [@vnphanquang](https://github.com/vnphanquang)! - make sure content span full height in fullscreen mode when there is no header
+
 ## 1.2.5
 
 ### Patch Changes
