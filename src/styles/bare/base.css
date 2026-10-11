@@ -110,6 +110,7 @@
 
 	.codeblock.codeblock-root > & {
 		position: absolute;
+		z-index: 2;
 		inset-block-start: 0;
 		inset-inline-end: 0;
 
