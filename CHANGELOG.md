@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.7
+
+### Patch Changes
+
+- [`943409f`](https://github.com/vnphanquang/remark-enhance-codeblock/commit/943409fee13fa5a5a86dab77ba7d41f2862bceab) Thanks [@vnphanquang](https://github.com/vnphanquang)! - bump `z-index` of `.codeblock-actions` to stay on top of the content when there is no header
+
 ## 1.2.6
 
 ### Patch Changes
